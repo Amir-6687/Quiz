@@ -14,6 +14,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  line-height: 1.6;
 }
 
 /* بهبود استایل دکمه‌ها */
@@ -23,6 +24,8 @@ button {
   border: none;
   padding: 12px 24px;
   font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -60,15 +63,22 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #f4f4f4;
+  padding: 15px 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(0.625rem);
+  border: solid rgba(255, 255, 255, 0.1); /* حاشیه نازک برای جداسازی */
   border-radius: 12px;
-  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+  animation: slideFadeIn 0.5s ease;
 }
 
+/* استایل نام بازیکن */
 #player-name {
   font-size: 1.2rem;
   font-weight: bold;
+  color: #6a11cb;
+  margin-right: auto; /* فاصله از دکمه‌ها */
 }
 
 .custom-checkbox {
@@ -77,6 +87,7 @@ h1 {
   position: relative;
   cursor: pointer;
   font-size: 16px;
+  font-weight: 500;
   color: #333;
   margin: 15px 0;
   padding-left: 35px;
@@ -103,6 +114,7 @@ h1 {
   background-color: #eee;
   border: 2px solid #6a11cb;
   border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -152,12 +164,13 @@ h1 {
   }
 }
 
+/* استایل دکمه‌ها */
 #theme-toggle,
 #exit-btn {
-  background-color: #eb7979;
+  background-color: #6a11cb;
   color: white;
   border: none;
-  padding: 8px 12px;
+  padding: 10px 15px;
   font-size: 1rem;
   font-weight: bold;
   border-radius: 8px;
@@ -174,8 +187,13 @@ h1 {
   background-color: #555;
 }
 
+/* استایل دکمه خروج */
+#exit-btn {
+  background-color: #ff4757;
+}
+
 #exit-btn:hover {
-  background-color: #e60000;
+  background-color: #ff6b81;
   transform: scale(1.05);
 }
 
@@ -203,12 +221,14 @@ h1 {
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .answer-btn:hover {
   background-color: #2575fc;
   transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .answer-btn.correct {
@@ -235,13 +255,13 @@ h1 {
 }
 
 .answer-btn.correct {
-  background: #28a745;
-  border-color: #1e7e34;
+  background-color: #4caf50;
+  border-color: #4caf50;
 }
 
 .answer-btn.wrong {
-  background: #dc3545;
-  border-color: #c82333;
+  background: #f44336;
+  border-color: #f44336;
 }
 
 /* Ripple Effekt */
@@ -296,7 +316,7 @@ h1 {
 @keyframes slideFadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -309,11 +329,11 @@ h1 {
 }
 
 #timer {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   color: #ff5722;
   margin: 20px 0;
-  animation: pulse 1s infinite;
+  animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
@@ -356,6 +376,8 @@ h1 {
 #start-container,
 #result-container {
   background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px); /* افکت بلور برای پس‌زمینه */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* حاشیه نازک */
   padding: 30px 40px;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
@@ -367,11 +389,22 @@ h1 {
 #restart-btn,
 #choose-category-btn,
 #theme-toggle {
+  background-color: #6a11cb;
+  color: white;
   margin-top: 20px;
-  padding: 12px 30px;
-  font-size: 18px;
-  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#start-btn:hover,
+#restart-btn:hover,
+#choose-category-btn:hover {
+  background-color: #2575fc;
+  transform: translateY(-2px);
 }
 
 #start-container {
@@ -447,6 +480,7 @@ body.dark #quiz-container,
 body.dark #start-container,
 body.dark #result-container {
   background-color: rgba(34, 34, 34, 0.95);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 body.dark #theme-toggle {
@@ -464,8 +498,30 @@ body.dark button:hover {
 
 body.dark .answer-btn {
   background-color: #444;
+  color: #f0f0f0;
 }
 
 body.dark .answer-btn:hover {
   background-color: #555;
+}
+
+/* حالت تاریک */
+body.dark #header {
+  background-color: rgba(34, 34, 34, 0.9);
+}
+
+body.dark #player-name {
+  color: #f0f0f0;
+}
+
+body.dark #theme-toggle {
+  background-color: #555;
+}
+
+body.dark #exit-btn {
+  background-color: #ff6b81;
+}
+
+body.dark #exit-btn:hover {
+  background-color: #ff4757;
 }
