@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Start Screen -->
+    <div id="start-container">
+      <h1>Willkommen zum Quiz!</h1>
+      <input type="text" id="username" placeholder="Dein Name" />
+      <button id="start-btn">Starten</button>
+      <label for="hard-mode" class="custom-checkbox">
+        <input type="checkbox" id="hard-mode" />
+        <span class="checkmark"></span>
+        Hard Mode (20 Sekunden & schwere Fragen)
+      </label>
+      <label for="category">Wähle eine Kategorie:</label>
+      <p id="category-highscore"></p>
+      <select id="category">
+        <option value="general">Allgemein</option>
+        <option value="history">Geschichte</option>
+        <option value="sports">Sport</option>
+      </select>
+    </div>
+    <button id="music-toggle">🔊</button>
+
+    <!-- Quiz Screen -->
+    <div id="quiz-container" class="hidden">
+      <div id="header">
+        <span id="player-name"></span>
+        <button id="theme-toggle">🌙</button>
+        <button id="exit-btn">❌ Verlassen</button>
+      </div>
+
+      <h1 id="question">Frage kommt hier...</h1>
+
+      <div id="timer">30</div>
+      <div id="answer-buttons"></div>
+      <button id="next-btn">Nächste Frage</button>
+    </div>
+
+    <!-- Ergebnis & Rekord -->
+    <div id="result-container" class="hidden">
+      <h2>Ergebnis</h2>
+      <p id="result-name"></p>
+      <p id="result-score"></p>
+      <p id="high-score">Highscore: 0</p>
+      <button id="restart-btn">Nochmal spielen</button>
+      <button id="choose-category-btn">
+        Zu einer anderen Kategorie wechseln
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

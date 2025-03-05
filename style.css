@@ -1,0 +1,471 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: "Poppins", sans-serif; /* استفاده از فونت مدرن‌تر */
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* گرادینت جذاب‌تر */
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* بهبود استایل دکمه‌ها */
+button {
+  background-color: #6a11cb;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #2575fc;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Quiz Container */
+#quiz-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Frage */
+h1 {
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #a05454;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f4f4f4;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+#player-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  margin: 15px 0;
+  padding-left: 35px;
+  user-select: none;
+}
+
+/* مخفی کردن چک‌باکس پیش‌فرض */
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* ایجاد چک‌باکس سفارشی */
+.checkmark {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border: 2px solid #6a11cb;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* تغییر استایل چک‌باکس هنگام hover */
+.custom-checkbox:hover input ~ .checkmark {
+  background-color: #ddd;
+}
+
+/* تغییر استایل چک‌باکس هنگام انتخاب */
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #6a11cb;
+  border-color: #6a11cb;
+}
+
+/* ایجاد علامت تیک در چک‌باکس */
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* نمایش علامت تیک هنگام انتخاب */
+.custom-checkbox input:checked ~ .checkmark::after {
+  display: block;
+}
+
+/* انیمیشن برای علامت تیک */
+.checkmark::after {
+  animation: checkmarkFadeIn 0.2s ease;
+}
+
+@keyframes checkmarkFadeIn {
+  from {
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+#theme-toggle,
+#exit-btn {
+  background-color: #eb7979;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 10px;
+}
+
+#theme-toggle {
+  background-color: #333;
+}
+
+#theme-toggle:hover {
+  background-color: #555;
+}
+
+#exit-btn:hover {
+  background-color: #e60000;
+  transform: scale(1.05);
+}
+
+#exit-btn:active {
+  transform: scale(0.95);
+}
+
+/* Antwort Buttons */
+#answer-buttons {
+  margin-top: 20px;
+}
+
+/* بهبود استایل دکمه‌های پاسخ */
+.answer-btn {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: #6a11cb;
+  color: white;
+  border: 2px solid transparent;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.answer-btn:hover {
+  background-color: #2575fc;
+  transform: translateY(-2px);
+}
+
+.answer-btn.correct {
+  background-color: #4caf50;
+}
+
+.answer-btn.wrong {
+  background-color: #f44336;
+}
+
+.correct {
+  background-color: #4caf50;
+  color: white;
+}
+
+.wrong {
+  background-color: #f44336;
+  color: white;
+}
+
+.answer-btn:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+.answer-btn.correct {
+  background: #28a745;
+  border-color: #1e7e34;
+}
+
+.answer-btn.wrong {
+  background: #dc3545;
+  border-color: #c82333;
+}
+
+/* Ripple Effekt */
+.answer-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.answer-btn:active::after {
+  width: 200%;
+  height: 200%;
+}
+
+/* Next Button */
+#next-btn {
+  margin-top: 30px;
+  padding: 12px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  display: none;
+  transition: background 0.3s ease;
+}
+
+#next-btn:hover {
+  background-color: #1e7e34;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: slideFadeIn 0.5s ease;
+}
+
+#timer {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff5722;
+  margin: 20px 0;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #quiz-container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .answer-btn {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  #next-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+#start-container,
+#result-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+#start-btn,
+#restart-btn,
+#choose-category-btn,
+#theme-toggle {
+  margin-top: 20px;
+  padding: 12px 30px;
+  font-size: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#start-container {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+#start-container h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #6a11cb;
+}
+
+#start-container input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #6a11cb;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+#start-container label {
+  display: block;
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+#start-container select {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #6a11cb;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* بهبود استایل صفحه نتیجه */
+#result-container {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+#result-container h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #6a11cb;
+}
+
+#result-container p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+/* Dark Mode */
+body.dark {
+  background: #1c1c1c;
+  color: #f0f0f0;
+}
+
+body.dark #quiz-container,
+body.dark #start-container,
+body.dark #result-container {
+  background-color: rgba(34, 34, 34, 0.95);
+}
+
+body.dark #theme-toggle {
+  background: #444;
+  color: #fff;
+}
+
+body.dark button {
+  background-color: #444;
+}
+
+body.dark button:hover {
+  background-color: #555;
+}
+
+body.dark .answer-btn {
+  background-color: #444;
+}
+
+body.dark .answer-btn:hover {
+  background-color: #555;
+}
