@@ -7,8 +7,12 @@
 
 /* Body */
 body {
+  background-image: url(./image/Gemini_Generated_Image_xif1l4xif1l4xif1.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   font-family: "Poppins", sans-serif; /* استفاده از فونت مدرن‌تر */
-  background: linear-gradient(135deg, #6a11cb, #2575fc); /* گرادینت جذاب‌تر */
+
   color: #333;
   display: flex;
   justify-content: center;
